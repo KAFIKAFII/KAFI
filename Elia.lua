@@ -1531,6 +1531,7 @@ end
 if msg.content.video then
 Redis:set(TheElia.."Elia:Add:Rd:Manager:Video"..test..msg_chat_id, msg.content.video.video.remote.id)  
 end
+send(msg.chat_id_, msg.id_,'['..text..']')
 if msg.content.photo then
 if msg.content.photo.sizes[1].photo.remote.id then
 idPhoto = msg.content.photo.sizes[1].photo.remote.id
@@ -1544,7 +1545,6 @@ Redis:set(TheElia.."Elia:Add:Rd:Manager:Photo"..test..msg_chat_id, idPhoto)
 end
 return LuaTele.sendText(msg_chat_id,msg_id,"᥀︙تم حفظ رد للمدير بنجاح \n᥀︙ارسل ( *"..test.."* ) لرئية الرد","md",true)  
 end  
-send(msg.chat_id_, msg.id_,'['..text..']')
 end
 if text and text:match("^(.*)$") then
 if Redis:get(TheElia.."Elia:Set:Manager:rd"..msg.sender.user_id..":"..msg_chat_id) == "true" then
